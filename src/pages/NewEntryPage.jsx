@@ -33,7 +33,7 @@ export default function NewEntryPage() {
       const result = await processPhoto(file)
       setPhotos((prev) => [...prev, result])
       if (result.placeName && !form.place_name) {
-        setGpsHint(result.placeName)
+  setForm((prev) => ({ ...prev, place_name: result.placeName }))
       }
     }
   }
