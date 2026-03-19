@@ -16,12 +16,19 @@ async function readGPS(file) {
 async function reverseGeocode(lat, lng) {
   try {
     const res = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=ja`,
+      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=ja&zoom=18`,
       { headers: { 'User-Agent': 'Tabinoto/1.0' } }
     )
     const data = await res.json()
     const addr = data.address || {}
     return (
+      addr.amenity ||
+      addr.leisure ||
+      addr.tourism ||
+      addr.building ||
+      addr.shop ||
+      addr.office ||
+      addr.historic ||
       addr.city ||
       addr.town ||
       addr.village ||
