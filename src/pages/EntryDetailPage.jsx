@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEntries } from '../hooks/useEntries'
 import styles from './EntryDetailPage.module.css'
@@ -6,6 +7,7 @@ export default function EntryDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
   const { entries, deleteEntry } = useEntries()
+  const [lightbox, setLightbox] = useState(null)
 
   const entry = entries.find((e) => String(e.id) === String(id))
 
@@ -50,7 +52,7 @@ export default function EntryDetailPage() {
 
       {entry.ai_summary && (
         <div className={styles.aiSummary}>
-          <span className={styles.aiLabel}>✦ AI要約</span>
+          <span className={styles.aiLabel}>✨ AI要約</span>
           <p>{entry.ai_summary}</p>
         </div>
       )}
@@ -60,7 +62,7 @@ export default function EntryDetailPage() {
       {photos.length > 0 && (
         <div className={styles.photoGrid}>
           {photos.map((src, i) => (
-            <div key={i} className={styles.photoItem}>
+            <div key={i} className={styles.photoItem} onClick={() => setLightbox(src)}>
               <img src={src} alt={`写真 ${i + 1}`} />
             </div>
           ))}
@@ -70,6 +72,19 @@ export default function EntryDetailPage() {
       <div className={styles.actions}>
         <button className={styles.deleteBtn} onClick={handleDelete}>削除</button>
       </div>
+
+      {lightbox && (
+        <div
+          style={{
+            position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            zIndex: 1000, cursor: 'zoom-out'
+          }}
+          onClick={() => setLightbox(null)}
+        >
+          <img src={lightbox} style={{ maxWidth: '90vw', maxHeight: '90vh', borderRadius: '8px' }} />
+        </div>
+      )}
     </div>
   )
 }
