@@ -202,3 +202,10 @@
 }
 
 .placeEntryLink:hover { background: #d4eddf; }
+
+.mapWrapper {
+  height: calc(100vh - 120px);
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
