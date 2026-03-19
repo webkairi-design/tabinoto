@@ -1,44 +1,57 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 import styles from './Layout.module.css'
 
-const NAV_ITEMS = [
-  { to: '/diary',    label: '旅の日記',   icon: '✦' },
-  { to: '/map',      label: '地図',       icon: '◎' },
-  { to: '/research', label: 'AI情報収集', icon: '◈' },
-]
-
-export default function Layout({ children }) {
+export default function Layout() {
   return (
-    <div className={styles.root}>
-      <aside className={styles.sidebar}>
-        <div className={styles.brand}>
-          <span className={styles.brandTitle}>Tabinoto</span>
-          <span className={styles.brandSub}>旅のノート</span>
+    <div className={styles.app}>
+      {/* PCサイドメニュー */}
+      <nav className={styles.sidebar}>
+        <div className={styles.logo}>
+          <h1 className={styles.logoText}>Tabinoto</h1>
+          <p className={styles.logoSub}>旅のノート</p>
         </div>
-
-        <nav className={styles.nav}>
-          {NAV_ITEMS.map(({ to, label, icon }) => (
-            <NavLink
-              key={to}
-              to={to}
-              className={({ isActive }) =>
-                `${styles.navItem} ${isActive ? styles.navItemActive : ''}`
-              }
-            >
-              <span className={styles.navIcon}>{icon}</span>
-              <span>{label}</span>
+        <ul className={styles.nav}>
+          <li>
+            <NavLink to="/diary" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.active : ''}`}>
+              <span className={styles.navIcon}>+</span> 旅の日記
             </NavLink>
-          ))}
-        </nav>
+          </li>
+          <li>
+            <NavLink to="/map" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.active : ''}`}>
+              <span className={styles.navIcon}>○</span> 地図
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/ai-research" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.active : ''}`}>
+              <span className={styles.navIcon}>+</span> AI情報収集
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
 
-        <div className={styles.sidebarFooter}>
-          <span className={styles.version}>v1.0</span>
-        </div>
-      </aside>
-
+      {/* メインコンテンツ */}
       <main className={styles.main}>
-        {children}
+        <Outlet />
       </main>
+
+      {/* スマホ下部タブバー */}
+      <nav className={styles.bottomTab}>
+        <NavLink to="/diary" className={({ isActive }) => `${styles.tabItem} ${isActive ? styles.tabActive : ''}`}>
+          <span className={styles.tabIcon}>📔</span>
+          <span className={styles.tabLabel}>日記</span>
+        </NavLink>
+        <NavLink to="/diary/new" className={({ isActive }) => `${styles.tabItem} ${styles.tabCenter} ${isActive ? styles.tabActive : ''}`}>
+          <span className={styles.tabCenterIcon}>＋</span>
+        </NavLink>
+        <NavLink to="/map" className={({ isActive }) => `${styles.tabItem} ${isActive ? styles.tabActive : ''}`}>
+          <span className={styles.tabIcon}>🗺️</span>
+          <span className={styles.tabLabel}>地図</span>
+        </NavLink>
+        <NavLink to="/ai-research" className={({ isActive }) => `${styles.tabItem} ${isActive ? styles.tabActive : ''}`}>
+          <span className={styles.tabIcon}>🤖</span>
+          <span className={styles.tabLabel}>AI</span>
+        </NavLink>
+      </nav>
     </div>
   )
 }
