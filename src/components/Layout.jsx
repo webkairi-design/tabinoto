@@ -3,26 +3,26 @@ import styles from './Layout.module.css'
 
 export default function Layout() {
   return (
-    <div className={styles.app}>
+    <div className={styles.root}>
       {/* PCサイドメニュー */}
       <nav className={styles.sidebar}>
-        <div className={styles.logo}>
+        <div className={styles.brand}>
           <h1 className={styles.logoText}>Tabinoto</h1>
           <p className={styles.logoSub}>旅のノート</p>
         </div>
         <ul className={styles.nav}>
           <li>
-            <NavLink to="/diary" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.active : ''}`}>
+            <NavLink to="/diary" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ''}`}>
               <span className={styles.navIcon}>+</span> 旅の日記
             </NavLink>
           </li>
           <li>
-            <NavLink to="/map" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.active : ''}`}>
+            <NavLink to="/map" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ''}`}>
               <span className={styles.navIcon}>○</span> 地図
             </NavLink>
           </li>
           <li>
-            <NavLink to="/ai-research" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.active : ''}`}>
+            <NavLink to="/ai-research" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ''}`}>
               <span className={styles.navIcon}>+</span> AI情報収集
             </NavLink>
           </li>
@@ -31,7 +31,7 @@ export default function Layout() {
 
       {/* メインコンテンツ */}
       <main className={styles.main}>
-        <Outlet />
+        {children}
       </main>
 
       {/* スマホ下部タブバー */}
