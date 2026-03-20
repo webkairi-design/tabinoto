@@ -15,7 +15,7 @@ export default function App() {
         <Route path="/diary/new" element={<NewEntryPage />} />
         <Route path="/diary/:id" element={<EntryDetailPage />} />
         <Route path="/map" element={<MapPage />} />
-        <Route path="/research" element={<AiResearchPage />} />
+        <Route path="/ai-research" element={<AiResearchPage />} />
       </Routes>
     </Layout>
   )
