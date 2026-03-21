@@ -70,6 +70,7 @@ export default function EntryDetailPage() {
       )}
 
       <div className={styles.actions}>
+        <button className={styles.editBtn} onClick={() => navigate(`/diary/${entry.id}/edit`)}>編集</button>
         <button className={styles.deleteBtn} onClick={handleDelete}>削除</button>
       </div>
 

@@ -5,6 +5,7 @@ import NewEntryPage from './pages/NewEntryPage'
 import EntryDetailPage from './pages/EntryDetailPage'
 import MapPage from './pages/MapPage'
 import AiResearchPage from './pages/AiResearchPage'
+import EditEntryPage from './pages/EditEntryPage'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/diary" element={<DiaryPage />} />
         <Route path="/diary/new" element={<NewEntryPage />} />
         <Route path="/diary/:id" element={<EntryDetailPage />} />
+        <Route path="/diary/:id/edit" element={<EditEntryPage />} />
         <Route path="/map" element={<MapPage />} />
         <Route path="/ai-research" element={<AiResearchPage />} />
       </Routes>

@@ -155,3 +155,20 @@
   color: var(--color-danger);
   background: var(--color-danger-bg);
 }
+
+.editBtn {
+  padding: 7px 16px;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--color-text-3);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.editBtn:hover {
+  border-color: var(--color-accent-2);
+  color: var(--color-accent);
+  background: var(--color-accent-bg);
+}
