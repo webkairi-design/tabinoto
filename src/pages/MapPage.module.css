@@ -290,3 +290,75 @@
   padding: 8px;
   background: var(--color-surface, #f5f5e8);
 }
+
+.filterRow {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  padding: 0.5rem 1.2rem;
+  border: 2px solid #4a7c59;
+  background: white;
+  color: #4a7c59;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.filterBtn:hover {
+  background: #4a7c59;
+  color: white;
+}
+
+.filterActive {
+  background: #4a7c59;
+  color: white;
+}
+
+.wishlistSection {
+  padding: 1rem;
+}
+
+.wishlistTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #1a1a2e;
+  margin-bottom: 0.75rem;
+}
+
+.wishlistList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wishCard {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1rem;
+  background: #fff9e6;
+  border: 1px solid #f39c12;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.wishCard:hover {
+  background: #fef0c0;
+}
+
+.wishName {
+  font-weight: bold;
+  color: #1a1a2e;
+  font-size: 0.95rem;
+}
+
+.wishLocation {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 0.2rem;
+}

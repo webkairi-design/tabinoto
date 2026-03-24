@@ -26,6 +26,11 @@ export default function Layout({ children }) {
               <span className={styles.navIcon}>+</span> AI情報収集
             </NavLink>
           </li>
+          <li>
+              <NavLink to="/ai-research/list" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ''}`}>
+                <span className={styles.navIcon}>📚</span> 保存済み調査
+              </NavLink>
+            </li>
         </ul>
       </nav>
 
@@ -47,6 +52,10 @@ export default function Layout({ children }) {
           <span className={styles.tabIcon}>🗺️</span>
           <span className={styles.tabLabel}>地図</span>
         </NavLink>
+        <NavLink to="/ai-research/list" className={({ isActive }) => `${styles.tabItem} ${isActive ? styles.tabActive : ''}`}>
+              <span className={styles.tabIcon}>📚</span>
+              <span className={styles.tabLabel}>保存済み</span>
+            </NavLink>
         <NavLink to="/ai-research" className={({ isActive }) => `${styles.tabItem} ${isActive ? styles.tabActive : ''}`}>
           <span className={styles.tabIcon}>🤖</span>
           <span className={styles.tabLabel}>AI</span>
