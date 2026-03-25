@@ -54,6 +54,7 @@ export default function MapPage() {
   const [openRegion, setOpenRegion] = useState(null)
   const [openPref, setOpenPref] = useState(null)
   const [filter, setFilter] = useState('all')
+  const [openWishlist, setOpenWishlist] = useState(false)
 
   const gpsEntries = entries.filter(e => e.gps_lat && e.gps_lng)
 
@@ -218,15 +219,20 @@ export default function MapPage() {
 
       {(filter === 'all' || filter === 'wishlist') && wishlist.length > 0 && (
         <div className={styles.wishlistSection}>
-          <h2 className={styles.wishlistTitle}>⭐ 行きたい場所</h2>
-          <div className={styles.wishlistList}>
-            {wishlist.map(wish => (
-              <div key={wish.id} className={styles.wishCard} onClick={() => flyToWish(wish)}>
-                <span className={styles.wishName}>{wish.name}</span>
-                {wish.location && <span className={styles.wishLocation}>{wish.location}</span>}
-              </div>
-            ))}
-          </div>
+          <button className={styles.wishlistHeader} onClick={() => setOpenWishlist(v => !v)}>
+            <span>⭐ 行きたい場所</span>
+            <span>{wishlist.length}件 {openWishlist ? '▲' : '▼'}</span>
+          </button>
+          {openWishlist && (
+            <div className={styles.wishlistList}>
+              {wishlist.map(wish => (
+                <div key={wish.id} className={styles.wishCard} onClick={() => flyToWish(wish)}>
+                  <span className={styles.wishName}>{wish.name}</span>
+                  {wish.location && <span className={styles.wishLocation}>{wish.location}</span>}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>

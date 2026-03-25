@@ -154,9 +154,14 @@
   height: 100%;
   object-fit: cover;
 }
-/* モバイル時は下部の＋ボタンがあるため「新しい記録」ボタンを非表示 */
-@media (max-width: 768px) {
-  .newBtn {
-    display: none;
+/* PC時：「新しい記録」ボタンをスクロールしても固定表示 */
+@media (min-width: 769px) {
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-bg, #f5f5e8);
+    padding: 1rem 0;
+    margin-bottom: 1rem;
   }
 }
