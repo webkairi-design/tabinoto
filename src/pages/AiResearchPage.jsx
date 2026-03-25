@@ -69,7 +69,6 @@ export default function AiResearchPage() {
     setWishlistStep('filling');
     try {
       const info = await claudeGeneratePlaceInfo(place);
-      // ✅ 修正: info.memo → info.notes
       setWishlistForm({ location: info.address || '', memo: info.notes || '' });
     } catch (e) {
       setWishlistForm({ location: '', memo: '' });
@@ -111,37 +110,41 @@ export default function AiResearchPage() {
 
       {result && (
         <div className={styles.resultBox}>
-          <div className={styles.resultText}>{result}</div>
 
-          <div className={styles.actionRow}>
+          {/* ── スクロールしても上部に固定されるボタンバー ── */}
+          <div className={styles.stickyBar}>
             {!showSaveForm && !savedMessage && (
               <button className={styles.saveBtn} onClick={() => setShowSaveForm(true)}>
                 💾 この結果を保存する
               </button>
             )}
-            {showSaveForm && (
-              <div className={styles.saveForm}>
-                <input
-                  className={styles.input}
-                  type="text"
-                  placeholder="保存タイトル"
-                  value={saveTitle}
-                  onChange={e => setSaveTitle(e.target.value)}
-                />
-                <div className={styles.formBtns}>
-                  <button className={styles.saveBtn} onClick={handleSave}>保存</button>
-                  <button className={styles.cancelBtn} onClick={() => setShowSaveForm(false)}>キャンセル</button>
-                </div>
-              </div>
-            )}
             {savedMessage && <p className={styles.message}>{savedMessage}</p>}
-
             {wishlistStep === null && (
               <button className={styles.wishBtn} onClick={handleWishlistStart}>
                 ⭐ 行きたい場所に追加
               </button>
             )}
           </div>
+
+          {/* 保存フォーム（stickyBarの直下に展開） */}
+          {showSaveForm && (
+            <div className={styles.saveForm}>
+              <input
+                className={styles.input}
+                type="text"
+                placeholder="保存タイトル"
+                value={saveTitle}
+                onChange={e => setSaveTitle(e.target.value)}
+              />
+              <div className={styles.formBtns}>
+                <button className={styles.saveBtn} onClick={handleSave}>保存</button>
+                <button className={styles.cancelBtn} onClick={() => setShowSaveForm(false)}>キャンセル</button>
+              </div>
+            </div>
+          )}
+
+          {/* 調査結果テキスト */}
+          <div className={styles.resultText}>{result}</div>
 
           {wishlistStep === 'extracting' && (
             <div className={styles.extracting}>🔍 場所を抽出中...</div>

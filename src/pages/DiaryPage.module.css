@@ -154,3 +154,9 @@
   height: 100%;
   object-fit: cover;
 }
+/* モバイル時は下部の＋ボタンがあるため「新しい記録」ボタンを非表示 */
+@media (max-width: 768px) {
+  .newBtn {
+    display: none;
+  }
+}

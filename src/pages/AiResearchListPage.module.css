@@ -34,11 +34,12 @@
   background: white;
   border-radius: 12px;
   border: 1px solid #e0e0e0;
-  overflow: hidden;
+
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
 .cardHeader {
+  border-radius: 12px 12px 0 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -68,8 +69,23 @@
 }
 
 .cardBody {
-  padding: 1.25rem;
+  padding: 0 1.25rem 1.25rem;
   border-top: 1px solid #e0e0e0;
+  position: relative;
+}
+
+/* スクロールしても上部に固定されるボタンバー */
+.stickyBar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: nowrap;
+  padding: 0.75rem 0;
+  background: white;
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 1rem;
 }
 
 .resultText {
@@ -83,7 +99,7 @@
 .actionRow {
   display: flex;
   gap: 0.75rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-bottom: 1rem;
 }
 
@@ -151,3 +167,53 @@
 }
 
 .cancelBtn:hover { background: #888; }
+.wishLabel {
+  font-weight: bold;
+  color: #1a1a2e;
+  margin: 0 0 0.5rem;
+}
+
+.placeButtons {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.placeBtn {
+  padding: 0.5rem 1rem;
+  background: white;
+  color: #4a90e2;
+  border: 2px solid #4a90e2;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.placeBtn:hover {
+  background: #4a90e2;
+  color: white;
+}
+
+.textarea {
+  padding: 0.65rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  width: 100%;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.textarea:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74,144,226,0.15);
+}
+
+.extracting {
+  color: #4a90e2;
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+}

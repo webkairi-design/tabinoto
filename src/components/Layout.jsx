@@ -27,10 +27,10 @@ export default function Layout({ children }) {
             </NavLink>
           </li>
           <li>
-              <NavLink to="/ai-research/list" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ''}`}>
-                <span className={styles.navIcon}>📚</span> 保存済み調査
-              </NavLink>
-            </li>
+            <NavLink to="/ai-research/list" className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ''}`}>
+              <span className={styles.navIcon}>📚</span> 保存済み調査
+            </NavLink>
+          </li>
         </ul>
       </nav>
 
@@ -39,26 +39,26 @@ export default function Layout({ children }) {
         {children}
       </main>
 
-      {/* スマホ下部タブバー */}
+      {/* スマホ下部タブバー（順番：日記・地図・＋・AI・保存済み） */}
       <nav className={styles.bottomTab}>
         <NavLink to="/diary" className={({ isActive }) => `${styles.tabItem} ${isActive ? styles.tabActive : ''}`}>
           <span className={styles.tabIcon}>📔</span>
           <span className={styles.tabLabel}>日記</span>
         </NavLink>
-        <NavLink to="/diary/new" className={({ isActive }) => `${styles.tabItem} ${styles.tabCenter} ${isActive ? styles.tabActive : ''}`}>
-          <span className={styles.tabCenterIcon}>＋</span>
-        </NavLink>
         <NavLink to="/map" className={({ isActive }) => `${styles.tabItem} ${isActive ? styles.tabActive : ''}`}>
           <span className={styles.tabIcon}>🗺️</span>
           <span className={styles.tabLabel}>地図</span>
         </NavLink>
-        <NavLink to="/ai-research/list" className={({ isActive }) => `${styles.tabItem} ${isActive ? styles.tabActive : ''}`}>
-              <span className={styles.tabIcon}>📚</span>
-              <span className={styles.tabLabel}>保存済み</span>
-            </NavLink>
+        <NavLink to="/diary/new" className={({ isActive }) => `${styles.tabItem} ${styles.tabCenter} ${isActive ? styles.tabActive : ''}`}>
+          <span className={styles.tabCenterIcon}>＋</span>
+        </NavLink>
         <NavLink to="/ai-research" className={({ isActive }) => `${styles.tabItem} ${isActive ? styles.tabActive : ''}`}>
           <span className={styles.tabIcon}>🤖</span>
           <span className={styles.tabLabel}>AI</span>
+        </NavLink>
+        <NavLink to="/ai-research/list" className={({ isActive }) => `${styles.tabItem} ${isActive ? styles.tabActive : ''}`}>
+          <span className={styles.tabIcon}>📚</span>
+          <span className={styles.tabLabel}>保存済み</span>
         </NavLink>
       </nav>
     </div>
